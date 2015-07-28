@@ -40,12 +40,14 @@
 		color: red;
 	}
 
-	.whoseTurn {
+	#playerContainer {
 		width: 125px;
 		height: 75px;
-		position: absolute;
-		top: 30%;
-		right: 10px;
+		position: relative;
+		
+	}
 
+	.whoseTurn {
+		text-align: center;
 	}
 	</style>

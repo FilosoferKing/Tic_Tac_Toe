@@ -1,52 +1,50 @@
-	.container {
+.container {
 
-		width: auto;
-		height: 100vh;
-		position: relative;
-	}
+    width: auto;
+    height: 100vh;
+    position: relative;
+}
 
-	.header {
-		font-size: 2em;
-		color: green;
-		padding-bottom: 10px;
-	}
+.header {
+    font-size: 2em;
+    color: green;
+    padding-bottom: 10px;
+}
 
-	h1:hover {
-		text-transform: uppercase;
-		color: blue;
-		font-family: cursive;
-	}
+h1:hover {
+    text-transform: uppercase;
+    color: blue;
+    font-family: cursive;
+}
 
-	span:hover {
-		
-	}
+span:hover {
 
-	.gameSquare {
-		background-color: white;
-		border: 2px solid black;
-		display: inline-block;
-		#float: left;
-		#text-align:center;
-		#padding:5px;
-		height: 200px;
-		width: 200px;
-		#transition: background-color 1s ease;
-		#transition: color 1s ease;
-	}
+}
 
+.gameSquare {
+    background-color: white;
+    border: 2px solid black;
+    display: inline-block;
+    #float: left;
+    #text-align: center;
+    #padding: 5px;
+    height: 200px;
+    width: 200px;
+    #transition: background-color 1s ease;
+    #transition: color 1s ease;
+}
 
+.gameSquare:hover {
+    background-color: yellow;
+    color: red;
+}
 
-	.gameSquare:hover {
-		background-color: yellow;
-		color: red;
-	}
+#playerContainer {
 
-	#playerContainer {
+    position: relative;
 
-		position: relative;
-		
-	}
+}
 
-	.whoseTurn {
-		text-align: center;
-	}
+.whoseTurn {
+    text-align: center;
+}

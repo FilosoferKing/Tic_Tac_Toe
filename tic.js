@@ -1,7 +1,15 @@
 /********Global Variables*********/
 var currentPlayer = playerX;
-var playerX;
-var playerO;
+var playerX = 1;
+var playerO = 0;
+var gameTile = ""; //saves the attribute background image X or O
+var playerMoves = []; //playerMoves stores Xs and Os
+var moves = 0; //moves stores the array position and will increment after each successful move
+var winConditions = [
+    [0,1,2],[3,4,5],[7,8,9], //horizontal win conditions
+    [0,3,6],[1,4,7],[2,5,8], //vertical win conditions
+    [0,4,8],[2,4,6] //diagonal win conditions
+];
 
 $(document).ready(function(){
   console.log('document was loaded');
@@ -28,6 +36,8 @@ $(document).ready(function(){
   var activeTile=$(this)
   console.log('activeTile is',activeTile)
   playerMove(activeTile);
+  gameTile = $(this).attr()
+  console.log('gameTile is',gameTile)
   });
 
 });
@@ -48,3 +58,31 @@ function playerMove(activeTile) {
       alert("Pick a different square."); //warning to let player know that square is taken
   };
 }
+
+
+
+
+
+
+
+
+
+function storeMove(gamePiece) {
+  playerMoves[moves] += gamePiece;
+  moves++;
+};
+
+function doWeHaveAWinner() {
+  for(var i = 0; i < playerMoves.length; i++) {
+    if((playerMoves[winConditions[i][0]]) == (playerMoves[winConditions[i][1]])
+      &&
+    (playerMoves[winConditions[i][1]]) == (playerMoves[winConditions[i][2]])) {
+      var winner = 
+      alert()
+    }
+  }
+}
+
+
+
+

@@ -1,5 +1,10 @@
-.container {
+body {
+    background: #000;
+}
 
+.container {
+    background: url('img/game_panel.png') no-repeat top right;
+    background-size: contain;
     width: auto;
     height: 100vh;
     position: relative;
@@ -22,21 +27,57 @@ span:hover {
 }
 
 .gameSquare {
-    background-color: white;
-    border: 2px solid black;
+    background: url('img/tile.png') no-repeat 50% 50%;
+    background-size: contain;
     display: inline-block;
-    #float: left;
-    #text-align: center;
-    #padding: 5px;
     height: 200px;
     width: 200px;
-    #transition: background-color 1s ease;
-    #transition: color 1s ease;
 }
 
-.gameSquare:hover {
-    background-color: yellow;
-    color: red;
+.xSquare {
+    background: url('img/x.png') no-repeat 50% 50%;
+    background-size: contain;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 100ms;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}
+
+.oSquare {
+    background: url('img/o.png') no-repeat 50% 50%;
+    background-size: contain;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 100ms;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes shake {
+    0% {-webkit-transform: scale(1);
+    -webkit-transform: rotateZ(5deg);}
+    50% {-webkit-transform: scale(.9);
+        -webkit-transform: rotateZ(-5deg);}
+    100% {-webkit-transform: scale(1);
+        -webkit-transform: rotateZ(5deg);}
+}
+
+#tile {
+    width: 200px;
+    height: 200px;
+}
+
+
+.xo {
+    width: 200px;
+    height: 200px;
 }
 
 #playerContainer {
@@ -47,4 +88,18 @@ span:hover {
 
 .whoseTurn {
     text-align: center;
+}
+
+.gameBoard {
+    margin-top: 6%;
+}
+
+#light {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -40%;
+    width: 80%;
+    height: 0;
+    z-index: -1;
 }

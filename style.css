@@ -1,13 +1,8 @@
-body {
-
-}
 	.container {
-		background-color: black;
+
 		width: auto;
 		height: 100vh;
 		position: relative;
-		background: url("img/tttbg.png") no-repeat 50% 50%;
-		background-size: cover;
 	}
 
 	.header {
@@ -27,22 +22,19 @@ body {
 	}
 
 	.gameSquare {
-		#background-color: white;
-		#border:2px solid black;
+		background-color: white;
+		border: 2px solid black;
 		display: inline-block;
 		#float: left;
 		#text-align:center;
 		#padding:5px;
-		#height: 100px;
-		#width: 100px;
+		height: 200px;
+		width: 200px;
 		#transition: background-color 1s ease;
 		#transition: color 1s ease;
 	}
 
-#tile {
-	width: 200px;
-	height: 200px;
-}
+
 
 	.gameSquare:hover {
 		background-color: yellow;
@@ -50,8 +42,7 @@ body {
 	}
 
 	#playerContainer {
-		width: 125px;
-		height: 75px;
+
 		position: relative;
 		
 	}

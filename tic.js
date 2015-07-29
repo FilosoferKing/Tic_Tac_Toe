@@ -5,7 +5,7 @@ var playerO;
 
 $(document).ready(function(){
   console.log('document was loaded');
-  var row = "<div class='col-sm-9 col-sm-offset-3 row'></div>";
+  var row = "<div class='col-sm-9 col-sm-offset-3 my_row'></div>";
   var tile = "<div class='col-sm-4 gameSquare'></div>";
 
   
@@ -15,7 +15,7 @@ $(document).ready(function(){
     
     for(var y = 1; y<=3; y++){
 
-      $(tile).appendTo(".row:nth-child(" + x + ")");
+      $(tile).appendTo(".my_row:nth-child(" + x + ")");
       console.log("Block");
       //" + x + " will be 1 or 2 or 3
     }
@@ -23,8 +23,8 @@ $(document).ready(function(){
 
   var whoseTurnIsItAnyway = "<div class='col-sm-9 col-sm-offset-3 whoseTurn'></div>";
 
-
-  $("#playerContainer").append(whoseTurnIsItAnyway).text("Player X's move!").addClass("playerContainer");
+  $('body').append("<div id='playerContainer'></div>");
+  $("#playerContainer").append(whoseTurnIsItAnyway).text("Player X's move!");
 
   $(".gameSquare").click(function(){
   var activeTile=$(".gameSquare")

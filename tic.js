@@ -22,11 +22,11 @@ $(document).ready(function(){
 
   var whoseTurnIsItAnyway = "<div class='col-sm-9 col-sm-offset-3 whoseTurn'></div>";
 
-  $("#playerContainer").append(whoseTurnIsItAnyway).text("Player X's move!");
+  $("#playerContainer").append(whoseTurnIsItAnyway).text("Player X's move!").addClass("playerContainer");
 
   $(".gameSquare").click(function(){
   var activeTile=$(".gameSquare")
-  console.log(activeTile)
+  console.log('activeTile is',activeTile)
   playerMove(activeTile);
   });
 
@@ -36,10 +36,10 @@ $(document).ready(function(){
 
 function playerMove(currentTile) {
   if($(this).text() == "") { //if the tile is empty
-    console.log(this)
+    console.log('this is',this)
     if(currentPlayer == playerX) { //if it is X's move
       $(this).text("X"); //place an X onto the tile
-    console.log(this)
+    console.log('this is',this)
       currentPlayer = playerO; //switch from X to O's move
       $(whoseTurnIsItAnyway).text("Player O's move!"); // update to show it is O's turn
     } else { //if it is O's move

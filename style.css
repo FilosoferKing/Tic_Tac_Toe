@@ -22,23 +22,48 @@
 		
 	}
 
-	.gameSquare {
-		background-color: white;
-		border:2px solid black;
-		display: inline-block;
-		float: left;
-		text-align:center;
-		padding:5px;
-		height: 100px;
-		width: 100px;
-		transition: background-color 1s ease;
-		transition: color 1s ease;
-	}
+.gameSquare {
+    background: url('img/tile.png') no-repeat 50% 50%;
+    background-size: contain;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+}
 
-	.gameSquare:hover {
-		background-color: yellow;
-		color: red;
-	}
+.xSquare {
+    background: url('img/x.png') no-repeat 50% 50%;
+    background-size: contain;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 100ms;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}
+
+.oSquare {
+    background: url('img/o.png') no-repeat 50% 50%;
+    background-size: contain;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 100ms;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes shake {
+    0% {-webkit-transform: scale(1);
+        -webkit-transform: rotateZ(5deg);}
+    50% {-webkit-transform: scale(.9);
+        -webkit-transform: rotateZ(-5deg);}
+    100% {-webkit-transform: scale(1);
+        -webkit-transform: rotateZ(5deg);}
+}
 
 	#playerContainer {
 		width: 125px;

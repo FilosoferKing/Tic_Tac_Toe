@@ -32,8 +32,6 @@ $(document).ready(function(){
 
 });
 
-
-
 function playerMove(currentTile) {
   if($(this).text() == "") { //if the tile is empty
     console.log('this is',this)

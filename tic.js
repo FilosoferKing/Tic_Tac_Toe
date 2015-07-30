@@ -25,12 +25,13 @@ $(document).ready(function(){
     for(var y = 1; y<=3; y++){ //for loop to add tiles
     var tile = $("<div>", { //creating tile div with appropriate classes
     class: "col-sm-4 gameSquare",
-    //class: "gameSquare",
+        //class: "gameSquare",
   });
       $(tile).appendTo(".row:nth-child(" + x + ")"); //append tiles to respective row
       //" + x + " will be 1 or 2 or 3
     };
   };
+
 
   var whoseTurnIsItAnyway = $("<div>", { //creating div that shows active player with appropriate classes
     class: "col-sm-9 col-sm-offset-3 whoseTurn",
@@ -56,13 +57,11 @@ $(document).ready(function(){
   $(".gameSquare").click(function(){ //when a gameSquare is clicked...
   var activeTile=$(this);//activeTile records the particular gameSquare
   console.log('activeTile is',activeTile)
-  playerMove(activeTile); //
-  gameTile = $(this).attr('class'); //records the attribute background for the gameSquare clicked
+  //gameTile = $(this).attr('class'); //records the attribute background for the gameSquare clicked
   console.log('gameTile is',gameTile)
   playerMove(activeTile);
-  storeMove(gameTile);
+  //storeMove(gameTile);
   doWeHaveAWinner();
-
   });
 
 });
@@ -82,17 +81,21 @@ function playerMove(activeTile) {
         console.log("X!: ", currentPlayer);
       $(activeTile).addClass('xSquare'); //place an X onto the tile
       currentPlayer = playerO; //switch from X to O's move
+        gameTile = "X";
+        storeMove(gameTile);
       //$(whoseTurnIsItAnyway).text("Player O's move!"); // update to show it is O's turn
     } else { //if it is O's move
         console.log("O!: ", currentPlayer);
       $(activeTile).addClass('oSquare'); //place an O onto the tile
       currentPlayer = playerX; //switch from O to X's move
+        gameTile = "O";
+        storeMove(gameTile);
       //$(whoseTurnIsItAnyway).text("Player X's move!"); //update to show it is X's turn
     };
   } else { //if the tile is already taken by X or O
       alert("Pick a different square."); //warning to let player know that square is taken
   };
-}
+};
 
 /*************************
   *  NAME/TYPE: storeMove function
@@ -105,10 +108,10 @@ function playerMove(activeTile) {
   * FUNCTIONS CALLED: N/A
 **************************/
 function storeMove(gameTile) {
-  playerMoves[moves] += gameTile; //we add in gamePiece to our playerMoves array based on
+  playerMoves[moves] = gameTile; //we add in gamePiece to our playerMoves array based on
   //moves which determines our index position within the array
   console.log('gameTile is', gameTile);
-  moves++; //we increment moves so that it shifts to the next array position
+  moves += 1; //we increment moves so that it shifts to the next array position
 };
 
 /*************************

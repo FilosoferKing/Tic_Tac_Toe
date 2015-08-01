@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     for (var x = 1; x <= 3; x++) { //for loop to add 3 rows
         var row = $("<div>", { //creating row div with appropriate classes
-            class: "col-sm-9 col-sm-offset-3 row",
+            class: "col-sm-9 col-sm-offset-1 row",
             //class: "col-sm-offset-3",
             //class: "row",
         });
@@ -31,8 +31,7 @@ $(document).ready(function () {
             //" + x + " will be 1 or 2 or 3
         }
         ;
-    }
-    ;
+    };
 
     for (var j = 1; j <= 1; j++) {
         $('.row:nth-child(' + j + ')').attr('ball', j);
@@ -55,15 +54,7 @@ $(document).ready(function () {
         }
     }
 
-    var whoseTurnIsItAnyway = $("<div>", { //creating div that shows active player with appropriate classes
-        class: "col-sm-9 col-sm-offset-3 whoseTurn",
-        //class: "col-sm-offset-3",
-        //class: "whoseTurn",
-    });
 
-    $('body').append("<div id='playerContainer'></div>"); //add the div to the body
-    $("#playerContainer").append(whoseTurnIsItAnyway).text("Player X's move!"); //add a div with text 
-    //indicating whose move it is to the div whoseTurnIsItAnyway
 
     /*************************
      *  NAME/TYPE: gameSquare click function
@@ -146,7 +137,6 @@ function storeMove(gameTile) {
  * PARAMETER(S): N/A
  * FUNCTIONS CALLED: inputDigit()
  **************************/
-var x = "col-sm-4 gameSquare xSquare";
 
 function doWeHaveAWinner() {
     for (var i = 0; i < winConditions.length; i++) {

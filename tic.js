@@ -6,8 +6,9 @@ var gameTile = ""; //saves the attribute background image X or O
 var playerMoves = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]; //playerMoves stores Xs and Os
 var moves; //moves stores the array position and will increment after each successful move
 var winner = '';
+var no_winner = 0
 var winConditions = [
-    [0, 1, 2], [3, 4, 5], [7, 8, 9], //horizontal win conditions
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], //horizontal win conditions
     [0, 3, 6], [1, 4, 7], [2, 5, 8], //vertical win conditions
     [0, 4, 8], [2, 4, 6] //diagonal win conditions
 ];
@@ -17,16 +18,15 @@ $(document).ready(function () {
     $('#winner').css({"opacity": "0"}).fadeTo(2000, 1);
     $('#playerX').addClass('playerX_flash');
     $('#playerO').addClass('playerO_flash');
-    setTimeout(function(){
-    $('#playerX').fadeTo(100, 0);
-    setTimeout(function(){
-    $('#playerX').css({"top": "45vh"});
-    }, 500);
-    setTimeout(function(){
-        $('#playerX').css({"opacity": "1"});
-    }, 500);
-    },1500);
-
+    setTimeout(function () {
+        $('#playerX').fadeTo(100, 0);
+        setTimeout(function () {
+            $('#playerX').css({"top": "45vh"});
+        }, 500);
+        setTimeout(function () {
+            $('#playerX').css({"opacity": "1"});
+        }, 500);
+    }, 1500);
 
 
     for (var x = 1; x <= 3; x++) { //for loop to add 3 rows
@@ -46,7 +46,8 @@ $(document).ready(function () {
             //" + x + " will be 1 or 2 or 3
         }
         ;
-    };
+    }
+    ;
 
     for (var j = 1; j <= 1; j++) {
         $('.row:nth-child(' + j + ')').attr('ball', j);
@@ -68,7 +69,6 @@ $(document).ready(function () {
             $('.row:nth-child(' + j + ') .gameSquare:nth-child(' + i + ')').attr('Win-Tag', i + 6);
         }
     }
-
 
 
     /*************************
@@ -107,20 +107,20 @@ function playerMove(activeTile) {
         console.log('currentPlayer: ', currentPlayer);
         if (currentPlayer == playerX) { //if it is X's move
 
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#playerX').css({"top": "5vh"});
             }, 200);
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#playerX').css({"opacity": "0"});
             }, 100);
 
-            setTimeout(function(){
-            setTimeout(function(){
-                $('#playerO').css({"bottom": "45vh"});
-            }, 200);
-            setTimeout(function(){
-                $('#playerO').css({"opacity": "1"});
-            }, 200);
+            setTimeout(function () {
+                setTimeout(function () {
+                    $('#playerO').css({"bottom": "45vh"});
+                }, 200);
+                setTimeout(function () {
+                    $('#playerO').css({"opacity": "1"});
+                }, 200);
             }, 200);
 
             console.log("X!: ", currentPlayer);
@@ -132,20 +132,20 @@ function playerMove(activeTile) {
             //$(whoseTurnIsItAnyway).text("Player O's move!"); // update to show it is O's turn
         } else { //if it is O's move
 
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#playerO').css({"bottom": "5vh"});
             }, 200);
-            setTimeout(function(){
+            setTimeout(function () {
                 $('#playerO').css({"opacity": "0"});
             }, 100);
 
-            setTimeout(function(){
-            setTimeout(function(){
-                $('#playerX').css({"top": "45vh"});
-            }, 200);
-            setTimeout(function(){
-                $('#playerX').css({"opacity": "1"});
-            }, 200);
+            setTimeout(function () {
+                setTimeout(function () {
+                    $('#playerX').css({"top": "45vh"});
+                }, 200);
+                setTimeout(function () {
+                    $('#playerX').css({"opacity": "1"});
+                }, 200);
             }, 200);
 
             console.log("O!: ", currentPlayer);
@@ -189,11 +189,10 @@ function storeMove(gameTile) {
  **************************/
 
 function doWeHaveAWinner() {
+
     for (var i = 0; i < winConditions.length; i++) {
 
-        if ((playerMoves[i] != "")
-            &&
-            (playerMoves[winConditions[i][0]]) == (playerMoves[winConditions[i][1]])
+        if ((playerMoves[winConditions[i][0]]) == (playerMoves[winConditions[i][1]])
             &&
             (playerMoves[winConditions[i][1]]) == (playerMoves[winConditions[i][2]])) {
             console.log("Winner True!", playerMoves[winConditions[i][0]], playerMoves[winConditions[i][1]], playerMoves[winConditions[i][2]]);
@@ -221,14 +220,31 @@ function doWeHaveAWinner() {
                 id: 'replay'
             });
             $(replay).insertBefore('#winner');
-
         }
+    }
+    no_winner += 1;
+
+    if (winner == "" && no_winner == 9) {
+        var cat = $('<img>', {
+            src: "img/cats.png",
+            id: "winner"
+        });
+        $('#winner').remove();
+        $(cat).insertAfter('#playerX');
+        $('#playerX').remove();
+        $('#playerO').remove();
+        var replay = $('<img>', {
+            src: "img/replay.png",
+            id: 'replay'
+        });
+        $(replay).insertBefore('#winner');
     }
 }
 
-$('.info').on('click', '#replay', function(){
+
+$('.info').on('click', '#replay', function () {
     location.reload();
-})
+});
 
 
 

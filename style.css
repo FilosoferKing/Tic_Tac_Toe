@@ -110,12 +110,31 @@ span:hover {
     height: 100vh;
 }
 
-.info img {
+.info #playerX {
     position: absolute;
     top: 50px;
     left: 50%;
     margin-left: -50%;
     width: 60%;
+    opacity: .5;
+}
+
+.info #playerO {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -50%;
+    width: 60%;
+    opacity: .5;
+}
+
+.info #winner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-70%, -50%);
+    height: 60vh;
+    width: 100%;
 }
 
 .row {

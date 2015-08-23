@@ -5,6 +5,7 @@ var currentPlayer = playerX;
 var gameTile = ""; //saves the attribute background image X or O
 var playerMoves = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]; //playerMoves stores Xs and Os
 var moves; //moves stores the array position and will increment after each successful move
+var winner = '';
 var winConditions = [
     [0, 1, 2], [3, 4, 5], [7, 8, 9], //horizontal win conditions
     [0, 3, 6], [1, 4, 7], [2, 5, 8], //vertical win conditions
@@ -140,20 +141,29 @@ function storeMove(gameTile) {
 
 function doWeHaveAWinner() {
     for (var i = 0; i < winConditions.length; i++) {
-        //console.log("testing: (winConditions[" + i + "][0]");
-        //console.log("Condition Test ", playerMoves[winConditions[i][0]]);
+
         if ((playerMoves[i] != "")
             &&
             (playerMoves[winConditions[i][0]]) == (playerMoves[winConditions[i][1]])
             &&
             (playerMoves[winConditions[i][1]]) == (playerMoves[winConditions[i][2]])) {
             console.log("Winner True!", playerMoves[winConditions[i][0]], playerMoves[winConditions[i][1]], playerMoves[winConditions[i][2]]);
-            alert("Winner True!", playerMoves[winConditions[i][0]], playerMoves[winConditions[i][1]], playerMoves[winConditions[i][2]]);
-            /*if (playerMoves[winConditions[i][0]] == x) {//we need to somehow determine if X or O has won
-             alert("X Won!"); //we need to decide how to indicate the winner. alert in place for now
-             } else {
-             //playerMoves.splice(0); //empties the entire array
-             }*/
+
+            if (playerMoves[winConditions[i][0]] == "X") {
+                winner = "x";
+                console.log('Winner is X');
+            } else {
+                winner = "o";
+                console.log('Winner is O');
+            }
+
+            var win = $('<img>', {
+                src: "img/" + winner + "wins.png",
+                id: "winner"
+            });
+            $('#winner').remove();
+            $(win).insertAfter('#playerX');
+
         }
     }
 }

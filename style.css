@@ -112,20 +112,59 @@ span:hover {
 
 .info #playerX {
     position: absolute;
-    top: 50px;
+    top: 5vh;
     left: 50%;
     margin-left: -50%;
     width: 60%;
-    opacity: .5;
+    opacity: 0;
+    transition-duration: .01s;
+}
+
+.info .playerX_flash {
+    position: absolute;
+    top: 5vh;
+    left: 50%;
+    margin-left: -50%;
+    width: 60%;
+    opacity: 0;
+    animation-name: flashX;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes flashX {
+    0% { opacity: 1;}
+    25% { opacity: 1;}
+    100% { opacity: 0;}
 }
 
 .info #playerO {
     position: absolute;
-    bottom: 50px;
+    bottom: 5vh;
     left: 50%;
     margin-left: -50%;
     width: 60%;
-    opacity: .5;
+    opacity: 0;
+}
+
+.info .playerO_flash {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    margin-left: -50%;
+    width: 60%;
+    opacity: 0;
+    animation-name: flashO;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes flashO {
+    0% { opacity: 1;}
+    25% { opacity: 1;}
+    100% { opacity: 0;}
 }
 
 .info #winner {
@@ -135,6 +174,17 @@ span:hover {
     transform: translate(-70%, -50%);
     height: 60vh;
     width: 100%;
+}
+
+.info #replay {
+    position: absolute;
+    top: 5vh;
+    left: 50%;
+    margin-left: -50%;
+    width: 60%;
+    opacity: 1;
+    transition-duration: .01s;
+    cursor: pointer;
 }
 
 .row {

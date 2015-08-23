@@ -14,6 +14,20 @@ var winConditions = [
 
 $(document).ready(function () {
     console.log('document was loaded');
+    $('#winner').css({"opacity": "0"}).fadeTo(2000, 1);
+    $('#playerX').addClass('playerX_flash');
+    $('#playerO').addClass('playerO_flash');
+    setTimeout(function(){
+    $('#playerX').fadeTo(100, 0);
+    setTimeout(function(){
+    $('#playerX').css({"top": "45vh"});
+    }, 500);
+    setTimeout(function(){
+        $('#playerX').css({"opacity": "1"});
+    }, 500);
+    },1500);
+
+
 
     for (var x = 1; x <= 3; x++) { //for loop to add 3 rows
         var row = $("<div>", { //creating row div with appropriate classes
@@ -92,13 +106,48 @@ function playerMove(activeTile) {
     if ($(activeTile).text() == "") { //if the tile is empty
         console.log('currentPlayer: ', currentPlayer);
         if (currentPlayer == playerX) { //if it is X's move
+
+            setTimeout(function(){
+                $('#playerX').css({"top": "5vh"});
+            }, 200);
+            setTimeout(function(){
+                $('#playerX').css({"opacity": "0"});
+            }, 100);
+
+            setTimeout(function(){
+            setTimeout(function(){
+                $('#playerO').css({"bottom": "45vh"});
+            }, 200);
+            setTimeout(function(){
+                $('#playerO').css({"opacity": "1"});
+            }, 200);
+            }, 200);
+
             console.log("X!: ", currentPlayer);
             $(activeTile).addClass('xSquare'); //place an X onto the tile
             currentPlayer = playerO; //switch from X to O's move
+            console.log("X!: ", currentPlayer);
             gameTile = "X";
             storeMove(gameTile);
             //$(whoseTurnIsItAnyway).text("Player O's move!"); // update to show it is O's turn
         } else { //if it is O's move
+
+            setTimeout(function(){
+                $('#playerO').css({"bottom": "5vh"});
+            }, 200);
+            setTimeout(function(){
+                $('#playerO').css({"opacity": "0"});
+            }, 100);
+
+            setTimeout(function(){
+            setTimeout(function(){
+                $('#playerX').css({"top": "45vh"});
+            }, 200);
+            setTimeout(function(){
+                $('#playerX').css({"opacity": "1"});
+            }, 200);
+            }, 200);
+
             console.log("O!: ", currentPlayer);
             $(activeTile).addClass('oSquare'); //place an O onto the tile
             currentPlayer = playerX; //switch from O to X's move
@@ -149,6 +198,7 @@ function doWeHaveAWinner() {
             (playerMoves[winConditions[i][1]]) == (playerMoves[winConditions[i][2]])) {
             console.log("Winner True!", playerMoves[winConditions[i][0]], playerMoves[winConditions[i][1]], playerMoves[winConditions[i][2]]);
 
+
             if (playerMoves[winConditions[i][0]] == "X") {
                 winner = "x";
                 console.log('Winner is X');
@@ -161,12 +211,24 @@ function doWeHaveAWinner() {
                 src: "img/" + winner + "wins.png",
                 id: "winner"
             });
+
             $('#winner').remove();
             $(win).insertAfter('#playerX');
+            $('#playerX').remove();
+            $('#playerO').remove();
+            var replay = $('<img>', {
+                src: "img/replay.png",
+                id: 'replay'
+            });
+            $(replay).insertBefore('#winner');
 
         }
     }
 }
+
+$('.info').on('click', '#replay', function(){
+    location.reload();
+})
 
 
 

@@ -6,7 +6,7 @@
 
 ##Features
 * Win/lose/"cat's game" notification.
-* PLayer turn notifcation.
+* Player turn notifcation.
 * Standard 3x3 gameboard.
 
 ##Project Notes
